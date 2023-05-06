@@ -1,5 +1,5 @@
 import * as fs from "fs";
-export class offers {
+export class Offer {
   id;
   method;
   item;
@@ -21,5 +21,5 @@ export class offers {
     } else this.valid = false;
   }
 }
-const data = fs.readFileSync("config/global.conf", "utf8");
+const data = fs.readFileSync("./config/global.conf", "utf8");
 export const methods = JSON.parse(data);
