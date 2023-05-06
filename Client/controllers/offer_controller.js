@@ -1,6 +1,10 @@
 import { offers as Offer, methods, offers } from "../models/offer.js";
+// import pkg from '{ PrismaClient }';
+// // import { PrismaClient } from '@prisma/client'
+// // const { PrismaClient } = pkg;
+// var prisma = pkg;
 import { PrismaClient } from '@prisma/client'
-var prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 
 const addOffer = async (offer) => {

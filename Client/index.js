@@ -1,11 +1,9 @@
-// import { express } from "express";
 import pkg from 'express';
-
+const { express } = pkg;
 import {kafka}  from "./controllers/kafka_consumer_controller.js";
 import router from "./routers/offer_router.js";
-const { express } = pkg;
-const app = express();
-app.use(express.json());
+const app = pkg();
+app.use(pkg.json());
 
 kafka();
 app.use(router);

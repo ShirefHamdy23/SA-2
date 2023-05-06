@@ -1,20 +1,28 @@
 import { KafkaClient, Consumer } from "kafka-node";
 import offerController from "./offer_controller.js";
 import { methods } from "../models/offer.js";
-import PrismaClient from '@prisma/client';
-const prisma = new PrismaClient();
-export const kafka = () => {
-  const Client = new KafkaClient({ kafkaHost: "kafka:9092" });
-  const consumer = new Consumer(client, [{ topic: process.env.TOPIC }], {
-    autoCommit: false,
-  });
-};
+let consumer;
 
-consumer.on("message", async (message) => {
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+async function main() {
+  await prisma.connect()
+  console.log(await prisma.users.count())
+}
+main().catch(console.error)
+
+export const kafka = ()=>{
+  const client = new KafkaClient({kafkaHost : "kafka:9092"});
+  consumer = new Consumer(client,[{topic : process.env.TOPIC}],{
+    autoCommit : false
+  });
+}
+
+consumer?.on("message", async (message) => {
   messageHandler(message);
 });
 
-consumer.on("error", (err) => {
+consumer?.on("error", (err) => {
   console.log(err);
 });
 async function messageHandler(message) {
