@@ -1,11 +1,11 @@
 import {Router} from "express";
 import {methods} from "../models/offer.js";
-import offerController from "../controllers/offer.controllers.js";
+import offeController from "../controllers/offer_controllers.js";
 
 const router = Router();
 
 router.post("/" , (req,res) => {
-    return offerController.sendOffer(res,{
+    return offeController.sendOffer(res,{
     ...req.body,
     method: methods.post,
     });
@@ -13,12 +13,12 @@ router.post("/" , (req,res) => {
 
 router.delete("/:id" ,  ( req,res) => {
     const {id} = req.params;
-    return offerController.sendOffer(res ,{id , method: methods.delete }); 
+    return offeController.sendOffer(res ,{id , method: methods.delete }); 
 });
 
 router.patch("/:id" ,  ( req,res) => {
     const {id} = req.params;
-    return offerController.sendOffer(
+    return offeController.sendOffer(
         res,
         {
             ...req.body,

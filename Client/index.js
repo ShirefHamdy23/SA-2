@@ -1,8 +1,11 @@
-import { express } from "express";
-import { kafka } from "./src/controllers/kafka.consumer.controller.js";
-import router from "./src/routers/offer.router.js";
+// import { express } from "express";
+import pkg from 'express';
+
+import {kafka}  from "./controllers/kafka_consumer_controller.js";
+import router from "./routers/offer_router.js";
+const { express } = pkg;
 const app = express();
-app.use(exoress.json());
+app.use(express.json());
 
 kafka();
 app.use(router);

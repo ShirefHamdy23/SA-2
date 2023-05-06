@@ -1,5 +1,5 @@
-import {offer as Offer } from "../models/offer.js";
-import { kafkaSend } from "./kafka.producer.js";
+import {Offer as Offer } from "../models/offer.js";
+import { kafkaSend } from "./kafka_producer.js";
 
 const sendOffer = (res,offer) => {
     offer = new Offer(offer);

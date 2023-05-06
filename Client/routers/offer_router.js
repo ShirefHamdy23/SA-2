@@ -1,5 +1,5 @@
 import { Router } from "express";
-import offerController from "../controllers/offer.controller.js";
+import offerController from "../controllers/offer_controller.js";
 const router = Router();
 router.get("/", async (req, res, next) => {
   try {

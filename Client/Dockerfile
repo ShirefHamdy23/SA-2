@@ -1,9 +1,11 @@
-FROM node:18.12.1
-#RUN apk add --update --no-cache openss11.1-compat
+FROM node:alpine
+RUN apk add --update --no-cache openssl
 WORKDIR /Customer
 COPY package*.json .
 COPY . .
 COPY ../config ./config
-RUN npm install
+RUN npm i -g prisma
+RUN prisma generate
+RUN npm i
 EXPOSE 1234
-CMD [ "yarn","start" ]
+ENTRYPOINT  ["yarn start" ]

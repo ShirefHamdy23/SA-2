@@ -1,6 +1,6 @@
 import express from "express" ;
-import {kafka} from "./src/controllers.producer.js";
-import { config } from "dotnev";
+import {kafka} from "./src/controllers/kafka_producer.js";
+import { config } from "dotenv";
 
 config();
 const app = express();

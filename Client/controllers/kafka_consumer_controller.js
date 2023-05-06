@@ -1,8 +1,8 @@
 import { KafkaClient, Consumer } from "kafka-node";
-import offerController from "./offer.controller.js";
+import offerController from "./offer_controller.js";
 import { methods } from "../models/offer.js";
-import PrimaClient from "@prisma/client";
-const prisma = new PrimaClient();
+import PrismaClient from '@prisma/client';
+const prisma = new PrismaClient();
 export const kafka = () => {
   const Client = new KafkaClient({ kafkaHost: "kafka:9092" });
   const consumer = new Consumer(client, [{ topic: process.env.TOPIC }], {
