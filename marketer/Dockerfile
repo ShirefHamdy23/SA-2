@@ -6,4 +6,4 @@ COPY  . .
 COPY ../config ./config
 RUN npm i
 EXPOSE 4321
-ENTRYPOINT [ "yarn" ,"start" ]
+CMD [ "node" ,"index.js" ]

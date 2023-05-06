@@ -7,7 +7,7 @@ export class offers {
   valid;
   constructor(message) {
     if (
-      (typeof message.iten === "string" &&
+      (typeof message.item === "string" &&
         typeof message.percentage === "number" &&
         message.method === methods.post) ||
       (Object.values(methods).includes(message.method) &&

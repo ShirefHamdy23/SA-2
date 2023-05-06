@@ -8,4 +8,4 @@ RUN npm i -g prisma
 RUN prisma generate
 RUN npm i
 EXPOSE 1234
-ENTRYPOINT  ["yarn start" ]
+CMD [ "node","index.js" ] 
