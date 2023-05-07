@@ -1,4 +1,4 @@
-import { Offer as Offer, methods } from "../models/offer.js";
+import { offer as Offer, methods } from "../models/offer.js";
 // import pkg from '{ PrismaClient }';
 // // import { PrismaClient } from '@prisma/client'
 // // const { PrismaClient } = pkg;
