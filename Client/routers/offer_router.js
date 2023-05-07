@@ -3,7 +3,7 @@ import offerController from "../controllers/offer_controller.js";
 const router = Router();
 router.get("/", async (req, res, next) => {
   try {
-    const Iffers = await offerController.getOffers();
+    const offers = await offerController.getOffers();
     res.json({
       type: "success",
       message: "offers retrieved successfully",

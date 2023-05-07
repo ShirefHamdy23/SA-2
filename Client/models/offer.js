@@ -21,5 +21,5 @@ export class Offer {
     } else this.valid = false;
   }
 }
-const data = fs.readFileSync("./config/global.conf", "utf8");
+const data = fs.readFileSync("config/global.conf", "utf8");
 export const methods = JSON.parse(data);

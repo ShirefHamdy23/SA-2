@@ -5,39 +5,39 @@ import { methods } from "../models/offer.js";
 
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
-async function main() {
-  await prisma.$connect()
-  // console.log(await prisma.users.count())
-}
-main().catch(console.error)
+// async function main() {
+//   await prisma.$connect()
+//   // console.log(await prisma.users.count())
+// }
+// main().catch(console.error)
 
 export const kafka = ()=>{
   // const client = new KafkaClient({ kafkaHost: "kafka:9092" });
-  const client = new KafkaClient({ kafkaHost: "host.docker.internal:9092" });
+  const client = new KafkaClient({ kafkaHost: "kafkahost:9092" });
   const consumer = new Consumer(client,[{topic : process.env.TOPIC}],{
     autoCommit : false
   });
-  return consumer
+  consumer?.on("message", async (message) => {
+    messageHandler(message);
+  });
+
+  consumer?.on("error", (err) => {
+    console.log(err);
+  });
 }
 
-kafka()?.on("message", async (message) => {
-  messageHandler(message);
-});
 
-kafka()?.on("error", (err) => {
-  console.log(err);
-});
 async function messageHandler(message) {
   const { topic, offset } = message;
   message = JSON.parse(message.value);
   const { id } = message;
-  const isIn = await prisma.message.findUnique({
+  const isIn = await prisma.messages.findUnique({
     where: { id: { offset, topic } },
   });
   if (!isIn) {
     console.log("new message");
     console.log(message);
-    await prisma.message.upsert({
+    await prisma.messages.upsert({
       where: { id: { offset, topic } },
       create: { topic, offset },
       update: {},
