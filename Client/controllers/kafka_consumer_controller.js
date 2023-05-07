@@ -13,7 +13,7 @@ const prisma = new PrismaClient()
 
 export const kafka = ()=>{
   // const client = new KafkaClient({ kafkaHost: "kafka:9092" });
-  const client = new KafkaClient({ kafkaHost: "kafkahost:9092" });
+  const client = new KafkaClient({ kafkaHost: "kafka:9092" });
   const consumer = new Consumer(client,[{topic : process.env.TOPIC}],{
     autoCommit : false
   });
