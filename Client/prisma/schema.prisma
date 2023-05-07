@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = "mysql://root:password@mysql:3306/mydb?connect_timeout=3000"
 }
 
 generator client {
@@ -11,9 +11,9 @@ generator client {
 }
 
 model offer {
-  id         Int     @id @default(autoincrement())
-  item       String?
-  percentage Int
+  id         Int      @id @default(autoincrement())
+  method     String
+  item       String
+  percentage Float
   valid      Boolean
-  methods    String
 }

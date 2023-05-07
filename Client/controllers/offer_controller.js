@@ -14,16 +14,13 @@ const addOffer = async (offer) => {
       data: { item: offer.item, percentage: offer.percentage },
     });
   }
-  else {
-    console.log("hiiii")
-  }
 };
 
 const getOffer = async (id) => {
   return await prisma.offer.findFirst({ where: { id: +id } });
 };
 const getOffers = async () => {
-  return await prisma.offer.findMany();
+  return await prisma.offer.findMany({});
 };
 const updateOffer = async (offer, id) => {
   offer = new Offer(offer);

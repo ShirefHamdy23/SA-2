@@ -2,6 +2,7 @@ import router from "../routes/offer.router.js";
 import {KafkaClient , Producer } from "kafka-node";
 const client = new KafkaClient({kafkaHost: "kafka:9092"});
 const producer = new Producer(client);
+
 export const  kafka = async (app) =>{
     producer.on("ready",() => {
         console.log("ready");

@@ -1,6 +1,6 @@
 FROM node:alpine
 RUN apk add --update --no-cache openssl
-WORKDIR /marketer
+WORKDIR /Marketer
 COPY package*.json .
 COPY  . .
 COPY ../config ./config
